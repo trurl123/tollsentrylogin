@@ -1,2 +1,4 @@
-$('.btn-login-openid').click();
-$("img[alt='Контур.Паспорт']").click()
+$(function() {
+  $('.btn-login-openid').click();
+  $("img[alt='Контур.Паспорт']").click()
+});

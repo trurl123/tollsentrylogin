@@ -2,7 +2,7 @@
   "name": "TollSentryLogin",
   "short_name":"TollSentryLogin",
   "description": "Автоматический клик на кнопку Login на сайте sentry, jhub.skbkontur",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "permissions": [
     "tabs",
     "https://billy-sentry.skbkontur.ru/", 
