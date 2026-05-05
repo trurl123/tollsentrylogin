@@ -1,31 +1,41 @@
 {
+  "manifest_version": 3,
   "name": "TollSentryLogin",
-  "short_name":"TollSentryLogin",
+  "short_name": "TollSentryLogin",
   "description": "Автоматический клик на кнопку Login на сайте sentry, jhub.skbkontur",
   "version": "1.0.10",
+  
   "permissions": [
-    "tabs",
-    "https://billy-sentry.skbkontur.ru/", 
-    "https://billy-sentry.testkontur.ru/", 
-    "https://jhub.skbkontur.ru/", 
-    "https://sentry.skbkontur.ru/"
+    "tabs"
   ],
-  "browser_action": {
-      "default_title": "AutoLoginSentry",
-      "default_icon": "chrome.png",
-      "default_popup": "popup.html"
+  
+  "host_permissions": [
+    "https://jhub.skbkontur.ru/*",
+    "https://sentry.skbkontur.ru/*"
+  ],
+  
+  "action": {
+    "default_title": "AutoLoginSentry",
+    "default_icon": "chrome.png",
+    "default_popup": "popup.html"
   },
+  
   "icons": {
     "48": "icon48_2.png"
   },
+  
   "background": {
-    "persistent": false,
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
-  "content_scripts": [{
-    "matches": ["file:///*"],
-    "js":      ["jquery.js"]
-  }],
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://jhub.skbkontur.ru/*",
+        "https://sentry.skbkontur.ru/*"
+      ],
+      "js": ["jquery.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
